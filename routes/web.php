@@ -19,12 +19,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::resource('courses', CourseController::class);
     Route::resource('courses.lessons', LessonController::class);
-    Route::post('courses/{course}/enroll', [EnrollmentController::class, 'enroll'])->name('courses.enroll');
-    Route::get('userCourses', [EnrollmentController::class, 'index'])->name('userCourses');
+});
 
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::post('courses/{course}/enroll', [EnrollmentController::class, 'enroll'])->name('courses.enroll');
+    Route::get('my-courses', [EnrollmentController::class, 'index'])->name('my-courses');
 });
 
 require __DIR__.'/auth.php';
