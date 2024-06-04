@@ -49,4 +49,13 @@ class CourseController extends Controller
 
         return redirect()->route('courses.index')->with('success', 'Course deleted successfully.');
     }
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $courses = Course::where('title', 'LIKE', "%$query%")
+                        ->orWhere('description', 'LIKE', "%$query%")
+                        ->get();
+
+        return view('courses.index', compact('courses'));
+    }
 }

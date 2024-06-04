@@ -27,6 +27,8 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('courses/{course}/enroll', [EnrollmentController::class, 'enroll'])->name('courses.enroll');
     Route::get('my-courses', [EnrollmentController::class, 'index'])->name('my-courses');
+    Route::get('search', [CourseController::class, 'search'])->name('courses.search');
+
 });
 
 require __DIR__.'/auth.php';
