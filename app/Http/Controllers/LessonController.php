@@ -10,11 +10,11 @@ use App\Http\Requests\UpdateLessonRequest;
 
 class LessonController extends Controller
 {
-    public function index(Course $course)
-    {
-        $lessons = $course->lessons;
-        return view('lessons.index', compact('course', 'lessons'));
-    }
+    // public function index(Course $course)
+    // {
+    //     $lessons = $course->lessons;
+    //     return view('lessons.index', compact('course', 'lessons'));
+    // }
 
     public function create(Course $course)
     {
@@ -25,7 +25,7 @@ class LessonController extends Controller
     {
         $course->lessons()->create($request->validated());
 
-        return redirect()->route('courses.lessons.index', $course->id)->with('success', 'Lesson created successfully.');
+        return redirect()->route('courses.show', $course->id)->with('success', 'Lesson created successfully.');
     }
 
     public function show(Course $course, Lesson $lesson)
@@ -42,13 +42,13 @@ class LessonController extends Controller
     {
         $lesson->update($request->validated());
 
-        return redirect()->route('courses.lessons.index', $course->id)->with('success', 'Lesson updated successfully.');
+        return redirect()->route('courses.show', $course->id)->with('success', 'Lesson updated successfully.');
     }
 
     public function destroy(Course $course, Lesson $lesson)
     {
         $lesson->delete();
 
-        return redirect()->route('courses.lessons.index', $course->id)->with('success', 'Lesson deleted successfully.');
+        return redirect()->route('courses.show', $course->id)->with('success', 'Lesson deleted successfully.');
     }
 }

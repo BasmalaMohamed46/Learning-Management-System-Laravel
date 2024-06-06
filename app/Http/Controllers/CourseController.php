@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Course;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
@@ -10,7 +11,7 @@ class CourseController extends Controller
 {
     public function index()
     {
-        $courses = Course::all();
+        $courses = Course::paginate(7); 
         return view('courses.index', compact('courses'));
     }
 
@@ -49,12 +50,13 @@ class CourseController extends Controller
 
         return redirect()->route('courses.index')->with('success', 'Course deleted successfully.');
     }
+
     public function search(Request $request)
     {
         $query = $request->input('query');
         $courses = Course::where('title', 'LIKE', "%$query%")
                         ->orWhere('description', 'LIKE', "%$query%")
-                        ->get();
+                        ->paginate(7); 
 
         return view('courses.index', compact('courses'));
     }
