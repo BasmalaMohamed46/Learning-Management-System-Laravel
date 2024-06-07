@@ -33,12 +33,12 @@
                                     <form action="{{ route('courses.drop', $course->id) }}" method="POST" style="display:inline;">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm mr-2">Drop</button>
+                                        <button type="submit" class="btn btn-danger mr-2">Drop</button>
                                     </form>
                                 @else
                                     <form action="{{ route('courses.enroll', $course->id) }}" method="POST" style="display:inline;">
                                         @csrf
-                                        <button type="submit" class="btn btn-success btn-sm">Enroll</button>
+                                        <button type="submit" class="btn btn-success ">Enroll</button>
                                     </form>
                                 @endif
                             @endif
