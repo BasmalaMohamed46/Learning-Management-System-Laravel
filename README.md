@@ -10,7 +10,7 @@ Watch the demo video to see the application in action:
 
 ## Deployment
 
-The project is deployed at [Learning-Management-System](https://learning-management-system-laravel-pmxabkfay-basmalas-projects.vercel.app/).
+The project is deployed at [Learning-Management-System](https://learning-management-system-laravel.vercel.app/).
 
 ## Project Setup
 
