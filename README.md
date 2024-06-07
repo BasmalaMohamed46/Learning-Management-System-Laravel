@@ -1,66 +1,185 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Learning Management System Using Laravel
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This LMS will facilitate the management of courses, lessons, and user enrollments, providing both administrative and user-facing functionalities.
 
-## About Laravel
+## Demo Video
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Watch the demo video to see the application in action:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+[![LMS Demo](https://img.youtube.com/vi/xbbNQPwb9U0/0.jpg)](https://www.youtube.com/watch?v=xbbNQPwb9U0)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Deployment
 
-## Learning Laravel
+The project is deployed at [Learning-Management-System](https://learning-management-system-laravel-pmxabkfay-basmalas-projects.vercel.app/).
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Project Setup
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Prerequisites
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Before you begin, ensure you have the following installed on your machine:
+- PHP (>= 8.0)
+- Composer
+- Node.js and npm
+- MySQL or any other supported database
 
-## Laravel Sponsors
+### Installation
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+1. **Clone the repository:**
 
-### Premium Partners
+    ```bash
+    git clone https://github.com/BasmalaMohamed46/Learning-Management-System-Laravel
+    cd Learning-Management-System-Laravel
+    ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+2. **Install dependencies:**
 
-## Contributing
+    ```bash
+    composer install
+    npm install
+    npm run dev
+    ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+3. **Environment configuration:**
 
-## Code of Conduct
+    Copy the `.env.example` to `.env` and configure your database and other necessary environment variables:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    ```bash
+    cp .env.example .env
+    ```
 
-## Security Vulnerabilities
+4. **Generate application key:**
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+    ```bash
+    php artisan key:generate
+    ```
+
+5. **Run database migrations:**
+
+    ```bash
+    php artisan migrate
+    ```
+
+6. **Set up authentication:**
+
+    Install Laravel Breeze or Jetstream for authentication:
+
+    ```bash
+    composer require laravel/breeze --dev
+    php artisan breeze:install
+    npm install && npm run dev
+    php artisan migrate
+    ```
+
+7. **Serve the application:**
+
+    ```bash
+    php artisan serve
+    ```
+
+## Database Schema
+
+The project uses the following entities:
+
+- **Users**
+- **Courses**
+- **Lessons**
+- **Enrollments**
+
+### Migrations
+
+Run the migrations to create the necessary tables:
+
+```bash
+php artisan migrate
+```
+
+### Relationships
+
+* Each **Course** has a title, description, and a relationship with **Lessons**.
+* Each **Lesson** has a title, content, and belongs to a **Course**.
+* **Enrollments** track which **Users** are enrolled in which **Courses**.
+
+## Basic Functionality
+
+### CRUD Operations
+
+Implement CRUD operations for **Courses** and **Lessons**.
+
+### User Enrollments
+
+* Allow authenticated users to enroll in courses.
+* Display a list of courses a user is enrolled in.
+* Display a list of lessons for a course.
+
+## Additional Features
+
+### Role-Based Access Control
+
+* Only authenticated users can enroll in courses.
+* Only admin users can create, update, or delete courses and lessons.
+
+### Search Functionality
+
+* Implement a search functionality to find courses by title or description.
+
+## Frontend
+
+* Use Blade templates to create a simple and clean UI for the above functionalities.
+* Ensure the UI is responsive and user-friendly.
+
+## Testing
+
+### Feature Tests
+
+Write feature tests to cover the main functionalities, such as:
+
+* Course creation
+* User enrollment
+
+Run tests with:
+
+```bash
+php artisan test
+```
+
+## Important Environment Variables
+
+Here are the important environment variables used in the provided `.env` file:
+
+```dotenv
+APP_NAME=Learn
+APP_ENV=local
+APP_KEY=base64:q1UkqFhGXrJQIf/0DgnjtBdxIsSGRVbYbI70uI1tIH8=
+APP_DEBUG=true
+APP_TIMEZONE=UTC
+APP_URL=http://localhost
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=learningSystem
+DB_USERNAME=root
+DB_PASSWORD=
+
+SESSION_DRIVER=database
+CACHE_STORE=database
+MAIL_MAILER=log
+MAIL_FROM_ADDRESS="hello@example.com"
+MAIL_FROM_NAME="${APP_NAME}"
+```
+
+## Contribution
+
+We welcome contributions to this project! If you'd like to contribute, please fork the repository and use a feature branch. Pull requests are warmly welcome.
+
+1. Fork the repository
+2. Create a new feature branch (`git checkout -b feature/your-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin feature/your-feature`)
+5. Create a new Pull Request
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+
