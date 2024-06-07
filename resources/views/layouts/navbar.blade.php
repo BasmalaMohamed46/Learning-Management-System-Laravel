@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
     <div class="container-fluid">
-    <img src="{{ asset('graduates.png') }}" alt="Logo" class="mr-3">
+    <img src="https://i.postimg.cc/RCTv6Vnm/graduates.png" alt="Logo" class="mr-3">
         <a class="navbar-brand" href="{{ url('/') }}" style="font-size: 1.7em;">
             {{ config('app.name', 'Learn') }}
         </a>
